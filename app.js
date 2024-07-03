@@ -26,7 +26,8 @@ import {v2 as cloudinary} from 'cloudinary';
 dotenv.config({
     path:"../.env"
 })
-
+const PORT =process.env.PORT || 3000
+const DB_URL=process.env.DB_URL
 
 const app=express();
 app.use(express.json());
@@ -43,7 +44,7 @@ app.use(cookieParser());
 // app.use('/upload', express.static(path.join(__dirname, '../public/temp')));
 
 
-mongoose.connect(`mongodb://127.0.0.1:27017/E-learning`);
+mongoose.connect(DB_URL);
 
 app.use('/api/v1',Course);
 app.use('/api/v1/',register);
@@ -110,4 +111,4 @@ app.get('/read',async(req,res)=>{
 
 
 
-app.listen(3000);
+app.listen(PORT);
