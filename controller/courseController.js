@@ -17,6 +17,7 @@ export const getAllCourses=   catchError(async (req,res,next)=>{
       })
 
 })
+console.log("hy")
 
 
 export const createCourse= catchError(async(req,res,next)=>{
