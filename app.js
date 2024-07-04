@@ -33,7 +33,7 @@ const app=express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: 'https://668655a756d0ae9aed43a1e4--spectacular-pegasus-e521aa.netlify.app',
+        origin: 'https://mysca.netlify.app',
         credentials: true
     }
 ))
