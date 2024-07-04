@@ -27,13 +27,13 @@ dotenv.config({
     path:"../.env"
 })
 const PORT =process.env.PORT || 3000
-const DB_URL=process.env.DB_URL 
+const DB_URL=process.env.DB_URL
 
 const app=express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: 'http://localhost:5173',
+        origin: 'https://668655a756d0ae9aed43a1e4--spectacular-pegasus-e521aa.netlify.app',
         credentials: true
     }
 ))
