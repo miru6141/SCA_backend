@@ -8,6 +8,7 @@ import upload from '../middleware/multer.js';
 import { isAuthenticated,AuthorizeAdmin } from '../middleware/auth.js';
 import {removeFromPlayList} from '../controller/userController.js';
 import singleUpload from '../middleware/multer.js';
+import { Mailsended } from '../controller/Mailcontroller.js';
 
 const router =express.Router();
 
@@ -22,4 +23,5 @@ router.route('/addtoplaylist').post(isAuthenticated,addtoPlaylist);
 router.route('/removefromplaylist').post(isAuthenticated,removeFromPlayList)
 router.route("/course/:id").get(getCourseLecture).post(singleUpload,addLecture).delete(isAuthenticated,deleteCourse);
 router.route("lecture").delete(isAuthenticated,deleteLecture)
+router.route('/sendmail').post(Mailsended)
 export default router;

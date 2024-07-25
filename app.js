@@ -27,7 +27,8 @@ dotenv.config({
     path:"../.env"
 })
 const PORT =process.env.PORT || 3000
-const DB_URL=process.env.DB_URL
+const DB_URL=process.env.DB_URL||'mongodb://127.0.0.1:27017/E-learning'
+//const originconfig=process.env.ORIGIN || 'http://localhost:5173'
 
 const app=express();
 app.use(express.json());
@@ -49,6 +50,7 @@ mongoose.connect(DB_URL);
 app.use('/api/v1',Course);
 app.use('/api/v1/',register);
 app.use('/api/v1',profilepic)
+//app.use('/api/v1/',)
 
 
 
