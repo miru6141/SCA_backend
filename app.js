@@ -13,7 +13,7 @@ import path from 'path';
 import upload from './middleware/multer.js';
 import Course from './routes/courseRouter.js';
 import  register  from './routes/courseRouter.js';
-import { profilepic } from './controller/uplodeprofilepic.js';
+import { uploadprofilepic} from './controller/courseController.js';
 import { ErrrorMiddleware } from './middleware/Error.js';
 import  dotenv from 'dotenv';
 
@@ -27,14 +27,14 @@ dotenv.config({
     path:"../.env"
 })
 const PORT =process.env.PORT || 3000
-const DB_URL=process.env.DB_URL||'mongodb://127.0.0.1:27017/E-learning'
+//const DB_URL=process.env.DB_URL||'mongodb://127.0.0.1:27017/E-learning'
 //const originconfig=process.env.ORIGIN || 'http://localhost:5173'
 
 const app=express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: 'https://mysca.netlify.app',
+        origin: 'http://localhost:5173',
         credentials: true
     }
 ))
@@ -45,11 +45,11 @@ app.use(cookieParser());
 // app.use('/upload', express.static(path.join(__dirname, '../public/temp')));
 
 
-mongoose.connect(DB_URL);
+mongoose.connect('mongodb://127.0.0.1:27017/E-learning');
 
 app.use('/api/v1',Course);
 app.use('/api/v1/',register);
-app.use('/api/v1',profilepic)
+app.use('/api/v1',uploadprofilepic)
 //app.use('/api/v1/',)
 
 

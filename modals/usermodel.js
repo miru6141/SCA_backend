@@ -7,16 +7,33 @@ import fs from 'fs';
 
 const userSchema=mongoose.Schema({
 
-    firstName:String,
-    lastName:String,
-    phone:Number,
+    firstName:
+    {
+     type: String,
+    required:[true,' Please Enter Your Name '],
+    },
+    lastName: {
+        type: String,
+       required:[true,' Please Enter Your Name '],
+       },
+    phone: {
+        type: Number,
+       required:[true,' Please Enter Your Name '],
+       },
+   
     profilepic:{
         type:String,
         
     },
     dob:Date,
-    email:String,
-    password:String,
+    email: {
+        type: String,
+       required:[true,' Please Enter Your Name '],
+       },
+    password: {
+        type: String,
+       required:[true,' Please Enter Your Name '],
+       },
 
     role:{
         type:String

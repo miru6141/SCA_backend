@@ -1,17 +1,26 @@
      import jwt from 'jsonwebtoken';
      import userModel from '../modals/usermodel.js';
      import cookieParser from 'cookie-parser';
-      import ErrorHandler from '../utils/ErrorHandler.js';
+    import ErrorHandler from '../utils/ErrorHandler.js';
+   
+   
    export const isAuthenticated= async(req,res,next)=>{
 
-        const {token}= req.cookies;
+        const {Ctoken}= req.cookies;
+        console.log("Token received from cookie:", Ctoken);
 
-        if (!token) {
-            return res.status(401).json({ message: 'No token provided' });
+        if (!Ctoken) {
+            return res.status(401).json({ 
+                message: 'No token provided' 
+               
+            
+            
+            });
+           
         }
        
 
-        const decoded= jwt.verify(token,'shhhhhh');
+        const decoded= jwt.verify(Ctoken,'shhhhhh');
 
         req.user= await userModel.findById(decoded.id);
 
