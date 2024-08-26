@@ -13,12 +13,13 @@ import path from 'path';
 import upload from './middleware/multer.js';
 import Course from './routes/courseRouter.js';
 import  register  from './routes/courseRouter.js';
-import { uploadprofilepic} from './controller/courseController.js';
+import  uploadprofilepic from './routes/courseRouter.js';
 import { ErrrorMiddleware } from './middleware/Error.js';
 import  dotenv from 'dotenv';
 
 
 import {v2 as cloudinary} from 'cloudinary';
+import  payment  from './routes/courseRouter.js';
           
 
 
@@ -27,14 +28,14 @@ dotenv.config({
     path:"../.env"
 })
 const PORT =process.env.PORT || 3000
-//const DB_URL=process.env.DB_URL||'mongodb://127.0.0.1:27017/E-learning'
-//const originconfig=process.env.ORIGIN || 'http://localhost:5173'
+const DB_URL=process.env.DB_URL||'mongodb://127.0.0.1:27017/E-learning'
+const originconfig=process.env.ORIGIN || 'http://localhost:5173'
 
 const app=express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: 'http://localhost:5173',
+        origin: originconfig,
         credentials: true
     }
 ))
@@ -45,11 +46,12 @@ app.use(cookieParser());
 // app.use('/upload', express.static(path.join(__dirname, '../public/temp')));
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/E-learning');
+mongoose.connect(DB_URL);
 
 app.use('/api/v1',Course);
 app.use('/api/v1/',register);
 app.use('/api/v1',uploadprofilepic)
+app.use('/api/v1',payment)
 //app.use('/api/v1/',)
 
 

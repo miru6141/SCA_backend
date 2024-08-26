@@ -62,29 +62,27 @@ async function sendReferralEmail(referral, res) {
   let MailGenerator = new Mailgen({
       theme: "default",
       product: {
-          name: "Referral",
+          name: "Queries",
           link: 'https://mailgen.js/'
       }
   });
 
   let response = {
       body: {
-          name: `Hi ${referral.name}`,
-          intro: `${referral.message}`,
+         Student:'Student Queries',
           table: {
               data: [
                   {
-                      item: "Javascript Book",
-                      description: "A Book to help learn javascript programming",
-                      price: " 40% off if you using this refral id",
-                      Referral_id:`${referral.name}40`,
+                      Name: referral.name,
+                      Message:referral.message,
+                      phone:referral.phone,
                       email:`${referral.email}`,
 
                     
                   }
               ]
           },
-          outro: "Looking forward to do more business"
+          
       }
   };
 

@@ -9,7 +9,12 @@ import fs from 'fs';
 const fileSchema=mongoose.Schema({
 
  
-
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'user',
+    required: true
+  }, 
+  
     profilepic:{
         public_id:{
           type:String,

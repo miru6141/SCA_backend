@@ -1,12 +1,11 @@
  import { catchError } from "../middleware/catchError.js";
 import Course from "../modals/Course.js"
- import mongoose from "mongoose";
 import ErrorHandler from "../utils/ErrorHandler.js";
 import getDataUri from "../utils/DataUri.js";
 import { v2 as cloudinary } from "cloudinary";
 //import { profilepic } from "./uplodeprofilepic.js";
-import filemodel from '../modals/filemodel.js'
-;
+
+
 
 
 export const getAllCourses=   catchError(async (req,res,next)=>{
@@ -19,50 +18,12 @@ export const getAllCourses=   catchError(async (req,res,next)=>{
       })
 
 })
-console.log("hy")
-
-
-export const uploadprofilepic= catchError(async(req,res,next)=>{
 
 
 
-  const file=req.file;
-  const fileUri=getDataUri(file);
-  console.log(fileUri);
-  console.log(file);
-
-  
 
 
-   const myCloud= await cloudinary.uploader.upload(fileUri)
-   if(!myCloud) return next(new ErrorHandler('cloudinary Error',500));
 
- const fileuploded= await filemodel.create({
-        
-      
-       profilepic:{
-         public_id:myCloud.public_id,
-         url:myCloud.secure_url
-
-       }
-
-       
-     
-
- })
- if(!fileuploded) return next(new ErrorHandler("invalid course id ",409))
-
-
-  
- 
- res.status(200).json({
-   success:true,
-   fileuploded,
-   message:"course profile pic successfully"
- })
-
-
-})
 
 
 export const createCourse= catchError(async(req,res,next)=>{
