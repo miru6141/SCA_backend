@@ -12,6 +12,11 @@ export const registerUser=async(req,res)=>{
 
     let {firstName,lastName,phone,dob,email,password,role}=req.body;
 
+    const existingUser = await userModel.findOne({ email });
+        if (existingUser) {
+            return res.status(400).json({ message: 'User already exists with this email' });
+        }
+
     bcrypt.genSalt(10,function (err,salt){
 
         bcrypt.hash(password,salt,async function(err,hash){
@@ -44,7 +49,7 @@ export const loginUser=async(req,res)=>{
 
     let user= await userModel.findOne({email})
 
-    if(!user) return res.send('something went wrong');
+    if(!user) return res.status(400).json({message:'email or password is invaild'});
 
     bcrypt.compare(req.body.password,user.password,function(err,result){   
         

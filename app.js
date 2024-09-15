@@ -11,15 +11,13 @@ import userModel from './modals/usermodel.js';
 import path from 'path';
 //const videofile=require('./modals/videomodal')
 import upload from './middleware/multer.js';
-import Course from './routes/courseRouter.js';
-import  register  from './routes/courseRouter.js';
-import  uploadprofilepic from './routes/courseRouter.js';
+import courseRouter from './routes/courseRouter.js'; 
 import { ErrrorMiddleware } from './middleware/Error.js';
 import  dotenv from 'dotenv';
 
 
 import {v2 as cloudinary} from 'cloudinary';
-import  payment  from './routes/courseRouter.js';
+
           
 
 
@@ -35,7 +33,7 @@ const app=express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: 'https://mysca.netlify.app',
+        origin: 'http://localhost:5173',
         credentials: true
     }
 ))
@@ -46,12 +44,10 @@ app.use(cookieParser());
 // app.use('/upload', express.static(path.join(__dirname, '../public/temp')));
 
 
-mongoose.connect(DB_URL);
+mongoose.connect('mongodb://127.0.0.1:27017/E-learning');
 
-app.use('/api/v1',Course);
-app.use('/api/v1/',register);
-app.use('/api/v1',uploadprofilepic)
-app.use('/api/v1',payment)
+app.use('/api/v1',courseRouter);
+
 //app.use('/api/v1/',)
 
 

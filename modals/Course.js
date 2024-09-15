@@ -75,6 +75,11 @@
          type:Date,
          default:Date.now()
 
+       },
+       price:{
+        type:Number,
+        require:true
+
        }
 
       })

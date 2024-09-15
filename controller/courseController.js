@@ -20,6 +20,18 @@ export const getAllCourses=   catchError(async (req,res,next)=>{
 })
 
 
+export const getCourses=   catchError(async (req,res,next)=>{
+
+  const courses= await Course.find().select('-lecture');
+
+  res.status(200).json({
+    success:true,
+    courses
+  })
+
+})
+
+
 
 
 
@@ -28,7 +40,7 @@ export const getAllCourses=   catchError(async (req,res,next)=>{
 
 export const createCourse= catchError(async(req,res,next)=>{
 
-       const {title,description,category,createdBy,}=req.body;
+       const {title,description,category,createdBy,price}=req.body;
 
        const file=req.file;
        const fileUri=getDataUri(file);
@@ -44,6 +56,7 @@ export const createCourse= catchError(async(req,res,next)=>{
             description,
             category,
             createdBy,
+            price,
             poster:{
               public_id:myCloud.public_id,
               url:myCloud.secure_url

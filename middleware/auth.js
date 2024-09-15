@@ -36,8 +36,8 @@
     
 export const AuthorizeAdmin= (req,res,next)=>{
 
-   // if(req.body==='')
-      //return next(new ErrorHandler("unauthorized Access ",403));
+    if(req.user.role!=='admin')
+      return next(new ErrorHandler("unauthorized Access ",403));
 
      next();
 

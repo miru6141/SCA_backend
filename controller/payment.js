@@ -1,8 +1,16 @@
 import Razorpay from 'razorpay';
+import  dotenv from 'dotenv';
+
+
+dotenv.config({
+    path:"\.env"
+  })
+  const RZkey=process.env.RZ_KEY;
+const RZsecret=process.env.RZ_SCERET;
 
 const razorpay = new Razorpay({
-    key_id: 'your_key_id', // Replace with your Razorpay key_id
-    key_secret: 'your_key_secret', // Replace with your Razorpay key_secret
+    key_id:RZkey,  
+    key_secret:RZsecret  // Replace with your Razorpay key_secret
 });
 
 export const payment= async (req, res) => {

@@ -5,6 +5,7 @@ import fs from 'fs';
 
 
 
+
 const userSchema=mongoose.Schema({
 
     firstName:
@@ -36,12 +37,14 @@ const userSchema=mongoose.Schema({
        },
 
     role:{
-        type:String
+        type:String,
+        default:'user'
     },
 
     playList:
     [
     {
+        
         course:{
             type:mongoose.Schema.ObjectId,
             ref:'Course',
@@ -53,7 +56,18 @@ const userSchema=mongoose.Schema({
     cretedAt:{
         type:Date,
         default:Date.now
-    }
+    },
+    Subscripstion:{
+        subscribstion_id:{
+            type:String,
+           
+        },
+        subscripstionStatus:{
+            type:String,
+         
+        }
+    },
+    
     
 
     
