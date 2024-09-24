@@ -33,7 +33,7 @@ const app=express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: originconfig,
+        origin: 'https://mysca.netlify.app',
         credentials: true
     }
 ))
