@@ -2,10 +2,16 @@
      import userModel from '../modals/usermodel.js';
      import cookieParser from 'cookie-parser';
     import ErrorHandler from '../utils/ErrorHandler.js';
+    import  dotenv from 'dotenv';
+
+    dotenv.config({
+        path:"\.env"
+      })
    
    
    export const isAuthenticated= async(req,res,next)=>{
-
+ 
+    const Tokensecret=process.env.TOKEN_SECRET
         const {Ctoken}= req.cookies;
         console.log("Token received from cookie:", Ctoken);
 
@@ -20,7 +26,7 @@
         }
        
 
-        const decoded= jwt.verify(Ctoken,'shhhhhh');
+        const decoded= jwt.verify(Ctoken,Tokensecret);
 
         req.user= await userModel.findById(decoded.id);
 

@@ -27,13 +27,13 @@ dotenv.config({
 })
 const PORT =process.env.PORT || 3000
 const DB_URL=process.env.DB_URL||'mongodb://127.0.0.1:27017/E-learning'
-// const originconfig=process.env.ORIGIN || 'http://localhost:5173'
+ const originconfig=process.env.ORIGIN||'http://localhost:5173'
 
 const app=express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: 'http://localhost:5173',
+        origin: originconfig,
         credentials: true
     }
 ))
@@ -44,7 +44,7 @@ app.use(cookieParser());
 // app.use('/upload', express.static(path.join(__dirname, '../public/temp')));
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/E-learning');
+mongoose.connect(DB_URL);
 
 app.use('/api/v1',courseRouter);
 

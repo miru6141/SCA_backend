@@ -3,13 +3,19 @@ import getDataUri from '../utils/DataUri.js';
 import {v2 as cloudinary} from 'cloudinary';
 import { catchError } from '../middleware/catchError.js';
 import jwt from 'jsonwebtoken';
+import  dotenv from 'dotenv';
+
+dotenv.config({
+  path:"\.env"
+})
 
 export const uploadProfilePic = catchError(async (req, res, next) => {
   const file = req.file;
   const fileUri = getDataUri(file);
+  const Tokensecret=process.env.TOKEN_SECRET
 
   const token = req.header('Authorization').replace('Bearer ', '');
-  const decoded = jwt.verify(token, 'shhhhhh');
+  const decoded = jwt.verify(token, Tokensecret);
   const userId = decoded.id;
 
   const myCloud = await cloudinary.uploader.upload(fileUri);

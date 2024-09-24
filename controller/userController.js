@@ -5,10 +5,15 @@ import userModel from '../modals/usermodel.js';
 import Course from '../modals/Course.js';
 import ErrorHandler from  '../utils/ErrorHandler.js'
 import { catchError } from '../middleware/catchError.js';
+import  dotenv from 'dotenv';
 
-
+dotenv.config({
+    path:"\.env"
+  })
 
 export const registerUser=async(req,res)=>{
+
+    const Tokensecret=process.env.TOKEN_SECRET
 
     let {firstName,lastName,phone,dob,email,password,role}=req.body;
 
@@ -31,7 +36,7 @@ export const registerUser=async(req,res)=>{
                 password:hash
                 
             })
-                  let token=jwt.sign({email},'shhhhhh')
+                  let token=jwt.sign({email},Tokensecret)
             res.cookie("token",token);
             res.json(userCreated);
 
