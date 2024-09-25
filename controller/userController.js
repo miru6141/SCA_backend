@@ -61,7 +61,7 @@ export const loginUser=async(req,res)=>{
         
         
        let token=jwt.sign({ id: user._id },'shhhhhh')
-       res.cookie("token",token,{ maxAge: 900000, httpOnly: true, path: '/', secure: true,
+       res.cookie("Ctoken",token,{ maxAge: 900000, httpOnly: true, path: '/', secure: true,
         sameSite: 'None',});
       
         if(result){
