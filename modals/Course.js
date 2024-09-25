@@ -15,7 +15,7 @@
          description:{
             type:String,
             required:[true,"please enter course title"],
-            minLength:[10,'Discription must be atleast 10 character'],
+            minLength:[4,'Discription must be atleast 10 character'],
           
          },
 

@@ -20,22 +20,6 @@ export const getAllCourses=   catchError(async (req,res,next)=>{
 })
 
 
-export const getCourses=   catchError(async (req,res,next)=>{
-
-  const courses= await Course.find().select('-lecture');
-
-  res.status(200).json({
-    success:true,
-    courses
-  })
-
-})
-
-
-
-
-
-
 
 
 export const createCourse= catchError(async(req,res,next)=>{

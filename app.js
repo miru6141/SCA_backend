@@ -33,7 +33,7 @@ const app=express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: 'http://localhost:5173',
+        origin: 'https://mysca.netlify.app',
         credentials: true
     }
 ))
@@ -44,7 +44,7 @@ app.use(cookieParser());
 // app.use('/upload', express.static(path.join(__dirname, '../public/temp')));
 
 
-mongoose.connect('mongodb://127.0.0.1:27017/E-learning');
+mongoose.connect(DB_URL);
 
 app.use('/api/v1',courseRouter);
 
