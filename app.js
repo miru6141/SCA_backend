@@ -27,7 +27,7 @@ dotenv.config({
 })
 const PORT =process.env.PORT || 3000
 const DB_URL=process.env.DB_URL||'mongodb://127.0.0.1:27017/E-learning'
-// const originconfig=process.env.ORIGIN || 'http://localhost:5173'
+ const originconfig=process.env.ORIGIN||'http://localhost:5173'
 
 const app=express();
 app.use(express.json());
