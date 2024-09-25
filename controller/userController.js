@@ -56,12 +56,13 @@ export const loginUser=async(req,res)=>{
 
     if(!user) return res.status(400).json({message:'email or password is invaild'});
 
-    bcrypt.compare(req.body.password,user.password,function(err,result){   
+    bcrypt.compare(password,user.password,function(err,result){   
         
         
         
        let token=jwt.sign({ id: user._id },'shhhhhh')
-       res.cookie("token",token,{ maxAge: 900000, httpOnly: true, path: '/',});
+       res.cookie("token",token,{ maxAge: 900000, httpOnly: true, path: '/', secure: true,
+        sameSite: 'None',});
       
         if(result){
             res.json({ user: user, token: token });
