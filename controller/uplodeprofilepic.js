@@ -15,7 +15,7 @@ export const uploadProfilePic = catchError(async (req, res, next) => {
   const Tokensecret=process.env.TOKEN_SECRET
 
   const token = req.header('Authorization').replace('Bearer ', '');
-  const decoded = jwt.verify(token, Tokensecret);
+  const decoded = jwt.verify(token, 'shhhhhh');
   const userId = decoded.id;
 
   const myCloud = await cloudinary.uploader.upload(fileUri);

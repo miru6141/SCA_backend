@@ -36,7 +36,7 @@ export const registerUser=async(req,res)=>{
                 password:hash
                 
             })
-                  let token=jwt.sign({email},Tokensecret)
+                  let token=jwt.sign({email},'shhhhhh')
             res.cookie("token",token);
             res.json(userCreated);
 
