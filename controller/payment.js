@@ -3,7 +3,7 @@ import  dotenv from 'dotenv';
 
 
 dotenv.config({
-    path:"/.env"
+    path:"\.env"
   })
   const RZkey=process.env.RZ_KEY;
 const RZsecret=process.env.RZ_SCERET;

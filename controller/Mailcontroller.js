@@ -9,7 +9,7 @@ import  dotenv from 'dotenv';
 
 
 dotenv.config({
-  path:"\.env"
+  path:"/.env"
 })
 
  // const gmail= process.env.GMAIL_USER
