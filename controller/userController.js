@@ -81,9 +81,14 @@ export const loginUser=async(req,res)=>{
 
 export const logoutUser =async (req, res) => {
       
-    res.clearCookie('token');
+  res.cookie('Ctoken', '', { 
+    maxAge: 0, 
+    httpOnly: true, 
+    secure: true, 
+    sameSite: 'None', 
+    path: '/'
+  })
                             // Assuming 'connect.sid' is the session cookie name
-    res.sendStatus(200);
 
 }
 
