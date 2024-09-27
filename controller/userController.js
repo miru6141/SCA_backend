@@ -82,12 +82,12 @@ export const loginUser=async(req,res)=>{
 export const logoutUser =async (req, res) => {
       
   res.cookie('Ctoken', '', { 
- 
+    maxAge: 0, 
     httpOnly: true, 
     secure: true, 
     sameSite: 'None', 
     path: '/',
-    expires: new Date(0)
+    
   })
      
   res.status(200).json({ message: 'Logged out successfully' });                       // Assuming 'connect.sid' is the session cookie name
