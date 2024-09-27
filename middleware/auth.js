@@ -26,7 +26,7 @@
         }
        
 
-        const decoded= jwt.verify(Ctoken,"shhhhhh");
+        const decoded= jwt.verify(Ctoken,Tokensecret);
 
         req.user= await userModel.findById(decoded.id);
 

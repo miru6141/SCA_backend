@@ -36,7 +36,7 @@ export const registerUser=async(req,res)=>{
                 password:hash
                 
             })
-                  let token=jwt.sign({email},'shhhhhh')
+                  let token=jwt.sign({email},Tokensecret)
             res.cookie("token",token);
             res.json(userCreated);
 
@@ -52,6 +52,8 @@ export const loginUser=async(req,res)=>{
       
       const{email,password}=req.body
 
+      const Tokensecret=process.env.TOKEN_SECRET
+
     let user= await userModel.findOne({email})
 
     if(!user) return res.status(400).json({message:'email or password is invaild'});
@@ -60,7 +62,7 @@ export const loginUser=async(req,res)=>{
         
         
         
-       let token=jwt.sign({ id: user._id },'shhhhhh')
+       let token=jwt.sign({ id: user._id },Tokensecret)
        res.cookie("Ctoken",token,{ maxAge: 900000, httpOnly: true, path: '/', secure: true,
         sameSite: 'None',});
       

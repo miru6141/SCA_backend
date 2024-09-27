@@ -17,7 +17,7 @@ const router =express.Router();
 router.route("/allcourses").get(isAuthenticated,AuthorizeAdmin,getAllCourses);
 router.route("/buycourses").get(getAllCourses);
 
-router.route("/createcourse").post(singleUpload,createCourse);
+router.route("/createcourse").post(isAuthenticated,singleUpload,createCourse);
 router.route("/signup").post(registerUser);
 router.route("/login").post(loginUser);
 router.route('/logout').post(logoutUser); 
